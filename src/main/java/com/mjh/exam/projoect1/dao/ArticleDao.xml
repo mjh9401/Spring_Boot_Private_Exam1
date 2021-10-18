@@ -2,7 +2,63 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mjh.exam.projoect1.dao.ArticleDao">
+	<!-- 전체조회 -->
 	<select id="list" resultType="Article">
 		SELECT * FROM article;
 	</select>
+	
+	<!-- 키워드 조회 -->
+	<select id="SearchKeyWord" resultType="Article">
+		Select * 
+		from article
+		<choose>
+			<when test="title != null">
+				where title = #{title}
+			</when>
+			<when test="body != null">
+				where body = #{body}
+			</when>
+		</choose>
+	</select>	
+	
+	<!-- 게시글 글쓰기 -->
+	<insert id="write">
+		INSERT INTO article 
+		<set>
+			regDate = now(),
+			updateDate = now(),
+			title = #{title},
+			body = #{body}
+		</set>
+	</insert>
+	
+	<!-- 게시글 지우기 -->
+	<delete id="deleteArticle">
+		delete from article
+		<where>
+			<if test="id != null">
+				id = #{id}
+			</if>
+		</where>
+	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="modify">
+		update article 
+		<set>
+			<choose>
+				<when test="title != null">
+					title = #{title}
+				</when>
+				<when test="body != null">
+					body = #{body}	
+				</when>
+				<otherwise>
+					title = #{title},
+					body = #{body}
+				</otherwise>
+			</choose>
+		</set>
+		where id = #{id}
+	</update>
 </mapper>
