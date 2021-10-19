@@ -1,0 +1,63 @@
+DROP DATABASE IF EXISTS Exam1;
+CREATE DATABASE Exam1;
+USE Exam1;
+
+# 게시물 테이블생성
+CREATE TABLE article(
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    title CHAR(100) NOT NULL,
+    `body` TEXT NOT NULL
+);
+
+# 게시글 샘플
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+title = '제목1',
+`body` = 'ㅋㅋㅋㅋ';
+
+
+# 회원테이블
+CREATE TABLE `member`(
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    loginID CHAR(20) NOT NULL,
+    loginPassword CHAR(60) NOT NULL,
+    authLevel SMALLINT(2) UNSIGNED DEFAULT 3 COMMENT '권한레발(3=일반,7=관리자)',
+    `name` CHAR(20) NOT NULL,
+    nickName CHAR(20) NOT NULL,
+    cellphonNo CHAR(20) NOT NULL,
+    email CHAR(50) NOT NULL,
+    delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴여부(0=탈퇴전, 1=탈퇴)',
+    delDate DATETIME COMMENT '탈퇴날짜'
+);
+
+# 회원 생성샘플
+INSERT INTO `member` 
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'admin',
+loginPassWord = 'admin',
+authLevel = 7,
+`name` = 'admin',
+nickName = 'admin',
+cellphonNo = '010-1111-1111',
+email = 'admin@namver.com';
+
+INSERT INTO `member` 
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'user1',
+loginPassWord = 'user1',
+`name` = 'user1',
+nickName = 'user1',
+cellphonNo = '010-2222-2222',
+email = 'user1@namver.com';
+
+
+SELECT * FROM `member`;
+
+

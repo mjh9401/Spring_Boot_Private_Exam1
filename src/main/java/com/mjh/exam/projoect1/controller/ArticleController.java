@@ -21,10 +21,10 @@ public class ArticleController {
 	}
 	
 	// 게시글 키워드 조회
-	@RequestMapping("/usr/article/search")
+	@RequestMapping("/usr/article/detail")
 	@ResponseBody
-	public Article SearchKeyWord(String title, String body) {
-		return articleService.SearchKeyWord(title,body);
+	public Article showdetail(String title, String body) {
+		return articleService.showdetail(title,body);
 	}
 	
 	// 게시글쓰기

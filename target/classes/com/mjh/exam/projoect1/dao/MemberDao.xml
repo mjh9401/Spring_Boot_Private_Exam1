@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mjh.exam.projoect1.dao.MemberDao">
+	<!-- 회원가입 -->
+	<insert id="doJoin">
+		INSERT INTO `member` 
+		SET regDate = NOW(),
+		updateDate = NOW(),
+		loginId = #{loginId},
+		loginPassWord = #{loginPassWord},
+		`name` = #{name},
+		nickName = #{nickName},
+		cellphonNO = #{cellphonNO},
+		email = #{email}
+	</insert>
+	
+	<!-- 회원 조회 -->
+	<select id="search" resultType="Member">
+		SELECT * FROM `member`
+		where name = #{name}
+		and email = #{email}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="modify">
+		update member
+		<set>
+			updateDate = now(),
+			<choose>
+				<when test="name != null">
+					name = #{name}
+				</when>
+				<when test="nickName != null">
+					nickName = #{nickName}
+				</when>
+				<when test="cellphonNo != null">
+					cellphonNo = #{cellphonNo}
+				</when>
+				<when test="email != null">
+					email = #{email}
+				</when>
+				<otherwise>
+					name = #{name},
+					nickName = #{nickName},
+					cellphonNo = #{cellphonNo},
+					email = #{email}
+				</otherwise>
+			</choose>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 회원 탈퇴  -->
+	<update id="delete">
+		update member
+		<set>
+			updateDate = now(),
+			delStatus = 1,
+			delDate = now()
+		</set>
+		where id = #{id}
+	</update>
+	
+</mapper>

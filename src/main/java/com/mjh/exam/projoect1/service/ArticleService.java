@@ -15,8 +15,8 @@ public class ArticleService {
 		return articleDao.list();
 	}
 
-	public Article SearchKeyWord(String title, String body) {
-		return articleDao.SearchKeyWord(title,body);
+	public Article showdetail(String title, String body) {
+		return articleDao.showdetail(title,body);
 	}
 
 	public void write(String title, String body) {

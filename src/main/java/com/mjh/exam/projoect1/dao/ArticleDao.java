@@ -10,7 +10,7 @@ public interface ArticleDao {
 
 	Article list();
 
-	Article SearchKeyWord(@Param("title") String title,@Param("body") String body);
+	Article showdetail(@Param("title") String title,@Param("body") String body);
 
 	void write(@Param("title") String title, @Param("body") String body);
 
