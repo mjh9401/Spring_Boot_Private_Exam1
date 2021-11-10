@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../common/header.jspf" %>
 <style>
-  body{
-    background-image: url("https://post-phinf.pstatic.net/MjAxODA2MjJfMTE1/MDAxNTI5NjU0NzkyNDQx.RnzgNCdU9nC3y8P9xxT7Knfp4bbWWhR0vH3BtMifXNAg.rQOWvZb2adrPcfgckthJ_pbKlMBDt0Et5KKlro9lFXYg.JPEG/%EC%82%AC%EC%A7%84%EC%8C%A4%EC%9A%B0%EC%93%B0%EB%9D%BC_06_%EC%9D%B8%ED%8A%B8%EB%A1%9C.jpg?type=w1200");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  
   .nav{
     width: 100%;
     height: 10vh;
@@ -74,7 +70,7 @@
       </div>
     </div>
     <div class="icon cell">
-      <a href="#">로그인</a>
+      <a href="/usr/member/login">로그인</a>
     </div>
   </div>
   <div class="title-box">

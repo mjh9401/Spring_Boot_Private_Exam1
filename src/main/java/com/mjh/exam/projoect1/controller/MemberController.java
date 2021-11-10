@@ -13,6 +13,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	// 로그인
+	@RequestMapping("/usr/member/login")
+	public String showLogin() {
+		return "usr/login/login";
+	}
+	
 	// 회원가입
 	@RequestMapping("/usr/member/dojoin")
 	@ResponseBody
