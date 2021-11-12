@@ -62,4 +62,10 @@
 		where id = #{id}
 	</update>
 	
+	<!-- 로그인 아이디로 회원찾기 -->
+	<select id="getMemberByLoginId" resultType="Member"> 
+		select * from `member`
+		where loginId = #{loginId}
+	</select>
+	
 </mapper>

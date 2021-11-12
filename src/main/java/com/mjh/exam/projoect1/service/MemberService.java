@@ -29,6 +29,12 @@ public class MemberService {
 	public void delete(int id) {
 		memberDao.delete(id);
 	}
+
+	public Member getMemberByLoginId(String loginId) {
+		return memberDao.getMemberByLoginId(loginId);
+	}
+
+	
 	
 	
 }

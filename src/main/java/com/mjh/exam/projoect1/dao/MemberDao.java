@@ -19,4 +19,6 @@ public interface MemberDao {
 
 	void delete(@Param("id") int id);
 
+	Member getMemberByLoginId(@Param("loginId") String loginId);
+
 }
