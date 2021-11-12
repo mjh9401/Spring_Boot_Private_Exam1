@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
+import com.mjh.exam.projoect1.Util.Ut;
 import com.mjh.exam.projoect1.service.MemberService;
 
 import lombok.Getter;
@@ -37,13 +38,23 @@ public class loginInformation {
 			this.isLogined = true;
 			this.loginedMember = (Member) session.getAttribute("loginedMember");
 		}
-		
 		session.setAttribute("loginInformation", this);
 	}
 
 	public void logout() {
 		session.removeAttribute("loginedMember");
+		
+		if(session.getAttribute("loginedMember") == null) {
+			this.isLogined = false;
+			this.loginedMember = null;
+		}
 		session.setAttribute("loginInformation", this);
+	}
+
+	public void printHistoryReplaceJs(String msg, String afterUri) {
+		resp.setContentType("text/html; charset=UTF-8");
+		
+		Ut.jsHistoryReplace(msg, afterUri);
 	}
 
 }

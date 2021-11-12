@@ -45,14 +45,14 @@ public class MemberController {
 
 		// 아이디 비밀번호가 모두 맞는 경우
 		loginInformation.login(member);
-	
+		
 		return Ut.jsHistoryReplace(Ut.f("%s님 환영합니다.",member.getNickname()),"/");
 	}
 	
 	// 로그아웃
 	@RequestMapping("/usr/member/dologout")
 	@ResponseBody
-	public String doLogout() {		
+	public String doLogout() {
 		loginInformation.logout();
 		
 		return Ut.jsHistoryReplace("로그아웃됐습니다.", "/");
