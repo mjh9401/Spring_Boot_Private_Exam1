@@ -83,7 +83,7 @@
           </c:when>
           <c:when test="${loginInformation.isLogined()}">
             <a href="/usr/member/dologout">로그아웃</a>
-            <a href="#">개인정보</a>
+            <a href="/usr/member/modify">개인정보</a>
           </c:when>
          </c:choose>
         </li>

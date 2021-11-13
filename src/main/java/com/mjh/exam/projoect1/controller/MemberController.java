@@ -82,9 +82,7 @@ public class MemberController {
 			return Ut.jsHistoryBack("존재하지 않는 회원입니다.");
 		}
 
-		
 		return Ut.jsHistoryReplace(Ut.f("%s님의 아이디는 %s입니다.",member.getName(),member.getLoginId()),"/");
-
 	}
 	
 	
@@ -104,10 +102,28 @@ public class MemberController {
 	
 	// 회원정보수정
 	@RequestMapping("/usr/member/modify")
+	public String showModifyMember() {
+		
+		return "/usr/member/modify";
+	}
+	
+	// 회원정보수정
+	@RequestMapping("/usr/member/domodify")
 	@ResponseBody
-	public void ModifyMember(int id,String name,String nickName,
-			String cellphonNo,String email) {
-		memberService.Modify(id,name,nickName,cellphonNo,email);
+	public String doModifyMember(int id,String password,String passwordConfirm,String nickname,String tel,String email) {	
+		String Pw = password.trim();
+		String PwConfirm = passwordConfirm.trim();
+		
+		// 비밀번호와 비밀번호 확인이 일치하지 않는경우
+		if(Pw.equals(PwConfirm) == false) {
+			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다.");
+		}
+		
+		// 회원정보 수정
+		memberService.modifyMember(id,Pw,nickname,tel,email);
+		
+		
+		return Ut.jsHistoryReplace("회원정보수정이 완료됐습니다.", "/");
 	}
 	
 	// 회원탈퇴

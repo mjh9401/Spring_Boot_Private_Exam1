@@ -38,6 +38,13 @@ public class MemberService {
 		return memberDao.getMemberByNameAndEmail(name,email);
 	}
 
+
+	public void modifyMember(int id, String pw,String nickname, String tel, String email) {
+		memberDao.modifyMember(id,pw,nickname,tel,email);		
+	}
+
+	
+
 	
 	
 	

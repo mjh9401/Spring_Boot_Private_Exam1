@@ -74,4 +74,33 @@
 		where name = #{name}
 		and email = #{email}
 	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="modifyMember">
+		update `member`
+		<set>
+			<choose>
+				<when test="pw != null">
+					loginPassword = #{pw}
+				</when>
+				<when test="nickname != null">
+					nickname = #{nickname}	
+				</when>
+				<when test="tel != null">
+					cellphonNo = #{tel}
+				</when>
+				<when test="email != null">
+					email = #{email}
+				</when>
+				<otherwise>
+					loginPassword = #{pw},
+					nickname = #{nickname},
+					cellphonNo = #{tel},
+					email = #{email}
+				</otherwise>
+			</choose>
+		where id = #{id}
+		</set>
+	</update>
+	
 </mapper>
