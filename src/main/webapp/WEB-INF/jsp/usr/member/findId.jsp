@@ -4,19 +4,25 @@
 <style>
   .cotainer{
     width: 600px;
-    height: 500px;
+    height: 400px;
     background-color: white;
     margin: 0 auto;
     margin-top: 150px;
     border-radius: 10px;
+    box-sizing: border-box;
+    padding-top: 80px;
+  }
+  .box{
+    margin-left: 100px;
   }
   .inputLabel{
-    width: 500px;
-    height: 80px;
+    width: 300px;
+    height: 30px;
     margin: 0 auto;
-    margin-top:30px;
+    margin-top:20px;
     margin-left: 50px;
-    font-size: 35px;
+    margin-bottom:20px;
+    font-size: 20px;
     border-radius: 10px;
     border-color: gray;
   }  
@@ -43,16 +49,21 @@
  
 </style>
   <div class="cotainer">
-     <form action="../member/doLogin" method="post">
-       <input class="inputLabel" name="loginId" type="text" placeholder="아이디"/>
-       <input class="inputLabel" name="loginPassword" type="password" placeholder="비밀번호"/>
-       <input class="btn1" type="submit" value="로그인"/>
-       <div class="SubInputBox">
-         <a class="subInput " href="#">회원가입</a>
-         <a class="subInput " href="../member/findId">아이디찾기</a>
-         <a class="subInput " href="#">비밀번호찾기</a>
-       </div>
-     </form>
+     <form action="../member/finddoId" method="post">
+       <table class="box">
+         <tbody>
+            <tr>
+              <td><span>이름</span></td>
+              <td><input required="required" class="inputLabel" name="name" type="text" placeholder="이름"/></td>
+            </tr>
+            <tr>
+               <td><span>이메일</span></td>
+               <td><input required="required" class="inputLabel" name="email" type="email" placeholder="이메일"/></td>
+            </tr>
+         </tbody>
+       </table>   
+       <input class="btn1" type="submit" value="아이디찾기"/>
+    </form>
   </div>
   
  

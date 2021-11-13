@@ -25,7 +25,7 @@ public class loginInformation {
 	private HttpServletResponse resp;
 	private HttpSession session;
 	
-	public loginInformation(HttpServletRequest req, HttpServletResponse resp, MemberService memberService) {
+	public loginInformation(HttpServletRequest req, HttpServletResponse resp) {
 		this.req = req;
 		this.resp = resp;
 		this.session = req.getSession();
@@ -39,20 +39,14 @@ public class loginInformation {
 			this.loginedMember = (Member) session.getAttribute("loginedMember");
 		}
 		session.setAttribute("loginInformation", this);
+		
 	}
 
 	public void logout() {
-		session.removeAttribute("loginedMember");
-		
-		if(session.getAttribute("loginedMember") == null) {
-			this.isLogined = false;
-			this.loginedMember = null;
-		}
-		session.setAttribute("loginInformation", this);
+		session.invalidate();
 	}
 
 	public void printHistoryReplaceJs(String msg, String afterUri) {
-		resp.setContentType("text/html; charset=UTF-8");
 		
 		Ut.jsHistoryReplace(msg, afterUri);
 	}

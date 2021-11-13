@@ -58,6 +58,36 @@ public class MemberController {
 		return Ut.jsHistoryReplace("로그아웃됐습니다.", "/");
 	}
 	
+	// 아이디찾기
+	@RequestMapping("/usr/member/findId")
+	public String showfindId() {
+		return "/usr/member/findId";
+	}
+	
+	@RequestMapping("/usr/member/finddoId")
+	@ResponseBody
+	public String dofindId(String name,String email) {
+		// 이름 이메일을 입력 안했을경우
+		if(name.isEmpty()) {
+			return Ut.jsHistoryBack("이름을 입력하지 않았습니다.");
+		}
+		if(email.isEmpty()) {
+			return Ut.jsHistoryBack("이메일을 입력하지 않았습니다.");
+		}
+		
+		// 이름과 비밀번호가 틀린경우
+		Member member = memberService.getMemberByNameAndEmail(name,email);
+				
+		if(member == null) {
+			return Ut.jsHistoryBack("존재하지 않는 회원입니다.");
+		}
+
+		
+		return Ut.jsHistoryReplace(Ut.f("%s님의 아이디는 %s입니다.",member.getName(),member.getLoginId()),"/");
+
+	}
+	
+	
 	// 회원가입
 	@RequestMapping("/usr/member/dojoin")
 	@ResponseBody
@@ -86,5 +116,6 @@ public class MemberController {
 	public void deleteMember(int id) {
 		memberService.delete(id);
 	}
+
 	
 }

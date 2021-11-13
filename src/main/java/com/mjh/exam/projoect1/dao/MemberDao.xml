@@ -68,4 +68,10 @@
 		where loginId = #{loginId}
 	</select>
 	
+	<!-- 이름과 이메일로 회원찾기 -->
+	<select id="getMemberByNameAndEmail" resultType="Member">
+		select * from `member`
+		where name = #{name}
+		and email = #{email}
+	</select>
 </mapper>
