@@ -55,7 +55,7 @@ public class MemberController {
 	public String doLogout() {
 		loginInformation.logout();
 		
-		return Ut.jsHistoryReplace("로그아웃됐습니다.", "/");
+		return Ut.jsHistoryReplace("로그아웃 됐습니다.", "/");
 	}
 	
 	// 아이디찾기

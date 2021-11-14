@@ -37,17 +37,15 @@ public class loginInformation {
 		if(session.getAttribute("loginedMember") != null) {
 			this.isLogined = true;
 			this.loginedMember = (Member) session.getAttribute("loginedMember");
+			session.setAttribute("loginInformation", this);
 		}
-		session.setAttribute("loginInformation", this);
-		
 	}
 
-	public void logout() {
+	public void logout() {		
 		session.invalidate();
 	}
 
 	public void printHistoryReplaceJs(String msg, String afterUri) {
-		
 		Ut.jsHistoryReplace(msg, afterUri);
 	}
 
