@@ -38,6 +38,7 @@ public class loginInformation {
 			this.isLogined = true;
 			this.loginedMember = (Member) session.getAttribute("loginedMember");
 		}
+		// BeforeInterceptor로 이동
 		session.setAttribute("loginInformation", this);
 		
 	}
