@@ -34,6 +34,15 @@ public class loginInformation {
 	public void login(Member member) {
 		this.isLogined = true;
 		session.setAttribute("loginedMember", member);
+<<<<<<< HEAD
+=======
+		
+		if(session.getAttribute("loginedMember") != null) {
+			this.isLogined = true;
+			this.loginedMember = (Member) session.getAttribute("loginedMember");
+		}
+		// BeforeInterceptor로 이동
+>>>>>>> 222069f49d2d73dbef0cb1a40c7c27a8b003ae85
 		session.setAttribute("loginInformation", this);
 		
 	}
