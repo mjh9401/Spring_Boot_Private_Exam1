@@ -48,9 +48,9 @@
        <input class="inputLabel" name="loginPassword" type="password" placeholder="비밀번호"/>
        <input class="btn1" type="submit" value="로그인"/>
        <div class="SubInputBox">
-         <a class="subInput " href="#">회원가입</a>
+         <a class="subInput " href="../member/join">회원가입</a>
          <a class="subInput " href="../member/findId">아이디찾기</a>
-         <a class="subInput " href="#">비밀번호찾기</a>
+         <a class="subInput " href="../member/findLoginPw">비밀번호찾기</a>
        </div>
      </form>
   </div>

@@ -32,13 +32,10 @@ public class loginInformation {
 	}
 
 	public void login(Member member) {
+		this.isLogined = true;
 		session.setAttribute("loginedMember", member);
+		session.setAttribute("loginInformation", this);
 		
-		if(session.getAttribute("loginedMember") != null) {
-			this.isLogined = true;
-			this.loginedMember = (Member) session.getAttribute("loginedMember");
-			session.setAttribute("loginInformation", this);
-		}
 	}
 
 	public void logout() {		

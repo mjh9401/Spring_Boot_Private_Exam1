@@ -55,7 +55,7 @@ loginPassWord = 'user1',
 `name` = 'user1',
 nickName = 'user1',
 cellphonNo = '010-2222-2222',
-email = 'user1@namver.com';
+email = 'user1@naver.com';
 
 
 SELECT * FROM `member`;

@@ -103,4 +103,36 @@
 		</set>
 	</update>
 	
+	<update id="remodify">
+		update `member`
+		<set>
+			<choose>
+				<when test="pw != null">
+					loginPassword = #{pw}
+				</when>
+				<when test="name != null">
+					name = #{name}	
+				</when>
+				<when test="nickname != null">
+					nickname = #{nickname}	
+				</when>
+				<when test="cellphonNo != null">
+					cellphonNo = #{cellphonNo}
+				</when>
+				<when test="email != null">
+					email = #{email}
+				</when>
+				<otherwise>
+					loginPassword = #{pw},
+					name = #{name},
+					nickname = #{nickname},
+					cellphonNo = #{tel},
+					email = #{email}
+				</otherwise>
+			</choose>
+		</set>
+		where id = #{id}
+	</update>
+	
+	
 </mapper>

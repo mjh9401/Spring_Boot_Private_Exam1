@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Empty;
 import com.mjh.exam.projoect1.Util.Ut;
 import com.mjh.exam.projoect1.service.MemberService;
 import com.mjh.exam.projoect1.vo.Member;
@@ -17,6 +18,42 @@ public class MemberController {
 	@Autowired
 	private loginInformation loginInformation;
 	
+	// 임시 비밀번호 발송
+	@RequestMapping("/usr/member/findLoginPw")
+	public String findLoginPw() {
+		return "usr/member/findLoginPw";
+	}
+	
+	@RequestMapping("/usr/member/dofindLoginPw")
+	@ResponseBody
+	public String dofindLoginPw(String name,String loginId,String email) {
+		
+		if(Ut.empty(name)) {
+			return Ut.jsHistoryBack("이름를 입력해주세요");
+		}
+	
+		if(Ut.empty(loginId)) {
+			return Ut.jsHistoryBack("아이디를 입력해주세요");
+		}
+
+		if(Ut.empty(email)) {
+			return Ut.jsHistoryBack("이메일을 입력해주세요");
+		}
+		
+		Member member = memberService.getMemberByLoginId(loginId);
+		
+		if(member == null) {
+			return Ut.jsHistoryBack("존재하지 않는 회원입니다.");
+		}
+		
+		if(member.getLoginId().equals(loginId) == false) {
+			return Ut.jsHistoryBack("일치하지 않는 회원입니다.");
+		}
+		
+		memberService.notifyTempLoginPwByEmail(member);
+		
+		return Ut.jsHistoryReplace("임시비밀번호가 전송됐습니다.", "/");
+	}
 	
 	//로그인 화면
 	@RequestMapping("/usr/member/login")
@@ -36,15 +73,21 @@ public class MemberController {
 		if(loginPassword.isEmpty()) {
 			return Ut.jsHistoryBack("비밀번호가 입력하지 않았습니다.");
 		}
-		// 아이디 비밀번호가 틀린경우
-		Member member = memberService.getMemberByLoginId(loginId);
 		
-		if(member == null) {
-			return Ut.jsHistoryBack("아이디 또는 비밀번호가 틀렸습니다.");
-		}
+		Member member = memberService.getMemberByLoginId(loginId);
 
+		// 회원이 존재하지 않을경우
+		if(member == null) {
+			return Ut.jsHistoryBack("존재하지 않는 회원입니다.");
+		}
+		
+		// 비번이 틀린경우
+		if(member.getLoginPassword().equals(loginPassword) == false) {
+			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다.");
+		}	
 		// 아이디 비밀번호가 모두 맞는 경우
-		loginInformation.login(member);
+		
+		loginInformation.login(member);			
 		
 		return Ut.jsHistoryReplace(Ut.f("%s님 환영합니다.",member.getNickname()),"/");
 	}
@@ -87,10 +130,37 @@ public class MemberController {
 	
 	
 	// 회원가입
+	@RequestMapping("/usr/member/join")
+	public String showJoin() {
+		return "/usr/member/join";
+	}
+	
 	@RequestMapping("/usr/member/dojoin")
 	@ResponseBody
-	public void doJoin(String loginId,String loginPassWord,String name,String nickName,String cellphonNO,String email) {
-		memberService.doJoin(loginId,loginPassWord,name,nickName,cellphonNO,email);
+	public String doJoin(String loginId,String password,String name,String nickname,String tel,String email) {
+		
+		if(Ut.empty(loginId)) {
+			return Ut.jsHistoryBack("아이디가 없습니다.");
+		}
+		if(Ut.empty(password)) {
+			return Ut.jsHistoryBack("비밀번호가 없습니다.");
+		}
+		if(Ut.empty(name)) {
+			return Ut.jsHistoryBack("이름이 없습니다.");
+		}
+		if(Ut.empty(nickname)) {
+			return Ut.jsHistoryBack("닉네임이 없습니다.");
+		}
+		if(Ut.empty(tel)) {
+			return Ut.jsHistoryBack("전화번호가 없습니다.");
+		}
+		if(Ut.empty(email)) {
+			return Ut.jsHistoryBack("이메일이 없습니다.");
+		}
+		
+		memberService.doJoin(loginId, password, name, nickname, tel, email);
+		
+		return Ut.jsHistoryReplace("회원가입이 완료됐습니다.", "/");
 	}
 	
 	// 회원조회
@@ -121,7 +191,6 @@ public class MemberController {
 		
 		// 회원정보 수정
 		memberService.modifyMember(id,Pw,nickname,tel,email);
-		
 		
 		return Ut.jsHistoryReplace("회원정보수정이 완료됐습니다.", "/");
 	}
