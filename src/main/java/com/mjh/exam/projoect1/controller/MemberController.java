@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Empty;
 import com.mjh.exam.projoect1.Util.Ut;
 import com.mjh.exam.projoect1.service.MemberService;
 import com.mjh.exam.projoect1.vo.Member;
@@ -18,6 +17,7 @@ public class MemberController {
 	@Autowired
 	private loginInformation loginInformation;
 	
+		
 	// 임시 비밀번호 발송
 	@RequestMapping("/usr/member/findLoginPw")
 	public String findLoginPw() {
@@ -170,10 +170,25 @@ public class MemberController {
 		return memberService.search(name,email);
 	}
 	
-	// 회원정보수정
+	@RequestMapping("/usr/member/ckPassword")
+	public String ckPassword() {
+		return "/usr/member/checkPassword";
+	}
+	
+	@RequestMapping("/usr/member/doCkPassword")
+	@ResponseBody
+	public String doCkPassword(int id,String password) {
+		Member member = memberService.getMemberById(id);
+		
+		if(member.getLoginPassword().equals(password) == false) {
+			return Ut.jsHistoryBack("비번이 일치하지 않습니다.");
+		}
+		
+		return Ut.jsHistoryReplace("비밀번호가 일치합니다.", "/usr/member/modify");
+	}
+		
 	@RequestMapping("/usr/member/modify")
 	public String showModifyMember() {
-		
 		return "/usr/member/modify";
 	}
 	

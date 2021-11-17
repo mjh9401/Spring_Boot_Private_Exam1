@@ -45,7 +45,10 @@ public class MemberService {
 	public Member getMemberByNameAndEmail(String name, String email) {
 		return memberDao.getMemberByNameAndEmail(name,email);
 	}
-
+	
+	public Member getMemberById(int id) {
+		return memberDao.getMemberById(id);
+	}
 
 	public void modifyMember(int id, String pw,String nickname, String tel, String email) {
 		memberDao.modifyMember(id,pw,nickname,tel,email);		
@@ -72,6 +75,8 @@ public class MemberService {
 	private void setTempPassword(Member member, String tempPassword) {
 		memberDao.remodify(member.getId(),tempPassword, null, null, null, null);
 	}
+
+	
 
 	
 

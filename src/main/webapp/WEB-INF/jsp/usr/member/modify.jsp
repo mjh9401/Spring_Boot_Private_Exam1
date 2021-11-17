@@ -58,23 +58,23 @@
             </tr>
             <tr>
               <td><span>새로운 비밀번호</span></td>
-              <td><input required="required" class="inputLabel" name="password" type="password" placeholder="비밀번호를 입력해주세요"/></td>
+              <td><input class="inputLabel" name="password" type="password" placeholder="비밀번호를 입력해주세요" value="${loginInformation.getLoginedMember().getLoginPassword()}"/></td>
             </tr>
             <tr>
                <td><span>비밀번호 확인</span></td>
-               <td><input required="required" class="inputLabel" name="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력해주세요"/></td>
+               <td><input class="inputLabel" name="passwordConfirm" type="password" placeholder="비밀번호를 한번 더 입력해주세요" value="${loginInformation.getLoginedMember().getLoginPassword()}"/></td>
             </tr>
             <tr>
                <td><span>닉네임</span></td>
-               <td><input required="required" class="inputLabel" name="nickname" type="text" placeholder="이메일" value="${loginInformation.getLoginedMember().getNickname()}"/></td>
+               <td><input class="inputLabel" name="nickname" type="text" placeholder="이메일" value="${loginInformation.getLoginedMember().getNickname()}"/></td>
             </tr>
             <tr>
                <td><span>전화번호</span></td>
-               <td><input required="required" class="inputLabel" name="tel" type="tel" placeholder="휴대번호를 입력해주세요" value="${loginInformation.getLoginedMember().getEmail()}"/></td>
+               <td><input class="inputLabel" name="tel" type="tel" placeholder="휴대번호를 입력해주세요" value="${loginInformation.getLoginedMember().getEmail()}"/></td>
             </tr>
             <tr>
                <td><span>이메일</span></td>
-               <td><input required="required" class="inputLabel" name="email" type="email" placeholder="이메일" value="${loginInformation.getLoginedMember().getEmail()}"/></td>
+               <td><input class="inputLabel" name="email" type="email" placeholder="이메일" value="${loginInformation.getLoginedMember().getEmail()}"/></td>
             </tr>  
          </tbody>
        </table>   

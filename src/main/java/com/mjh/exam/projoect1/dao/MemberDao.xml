@@ -75,6 +75,12 @@
 		and email = #{email}
 	</select>
 	
+	<!-- 회원번호로 회원정보 찾기 -->
+	<select id="getMemberById" resultType="Member">
+		select * from `member`
+		where id = #{id}
+	</select>
+		
 	<!-- 회원정보 수정 -->
 	<update id="modifyMember">
 		update `member`
@@ -103,6 +109,7 @@
 		</set>
 	</update>
 	
+	<!-- 회원정보 비번포함 재수정 -->
 	<update id="remodify">
 		update `member`
 		<set>

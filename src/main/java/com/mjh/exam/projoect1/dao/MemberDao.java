@@ -23,10 +23,13 @@ public interface MemberDao {
 
 	Member getMemberByNameAndEmail(@Param("name") String name,@Param("email") String email);
 
+	Member getMemberById(@Param("id") int id);
+	
 	void modifyMember(@Param("id") int id,@Param("pw") String pw,@Param("nickname") String nickname,@Param("tel") String tel,@Param("email") String email);
 
 	void remodify(@Param("id") int id,@Param("pw") String sha256,@Param("name") String name, 
 			@Param("nickName") String nickName,@Param("cellphonNo") String cellphonNo,@Param("email") String email);
+
 
 
 }
