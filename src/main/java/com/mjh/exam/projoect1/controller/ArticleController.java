@@ -2,7 +2,9 @@ package com.mjh.exam.projoect1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mjh.exam.projoect1.service.ArticleService;
@@ -15,9 +17,9 @@ public class ArticleController {
 	
 	// 게시글 모두 조회
 	@RequestMapping("/usr/article/list")
-	@ResponseBody
-	public Article showList(String title,String body) {
-		return articleService.list();
+	public String showList(Model model,@RequestParam(defaultValue = "1") int boardId) {
+		
+		return "usr/article/list";
 	}
 	
 	// 게시글 키워드 조회
