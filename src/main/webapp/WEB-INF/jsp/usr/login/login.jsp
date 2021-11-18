@@ -8,6 +8,7 @@
     background-color: white;
     margin: 0 auto;
     margin-top: 150px;
+    border: 5px solid black;
     border-radius: 10px;
   }
   .inputLabel{
