@@ -18,7 +18,7 @@ public interface ArticleDao {
 
 	void modify(@Param("id") int id, @Param("title") String title,@Param("body") String body);
 
-	List<Article> getForPrintArticles(@Param("boardId") int boardId);
+	List<Article> getForPrintArticles(@Param("boardId") int boardId,@Param("limitStart") int limitStart,@Param("limitTake") int limitTake);
 
 	int getArticlesCount(@Param("boardId") int boardId);
 

@@ -14,6 +14,7 @@ import com.mjh.exam.projoect1.service.ArticleService;
 import com.mjh.exam.projoect1.service.BoardService;
 import com.mjh.exam.projoect1.vo.Article;
 import com.mjh.exam.projoect1.vo.Board;
+import com.mjh.exam.projoect1.vo.loginInformation;
 
 @Controller
 public class ArticleController {
@@ -21,25 +22,36 @@ public class ArticleController {
 	private ArticleService articleService;
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private loginInformation loginInformation;
 	
 	// 게시글 모두 조회
 	@RequestMapping("/usr/article/list")
-	public String showList(Model model, @RequestParam(defaultValue ="1") int boardId) {
+	public String showList(Model model, @RequestParam(defaultValue ="1") int boardId,
+			@RequestParam(defaultValue = "1") int page) {
 		Board board = boardService.getBoardById(boardId);
 		
 		if(board == null) {
 			return Ut.jsHistoryBack("게시물이 존재하지 않습니다.");
 		}
-		// 해당 게시물 글 찾기
-		List<Article> articles = articleService.getForPrintArticles(boardId);
 		// 한 페이지 안에 표현할 게시글 수
-		int itemCountInPage = 10;
+		int itemsCountInPage = 10;
+		
+		// 해당 게시물 글 찾기
+		List<Article> articles = articleService.getForPrintArticles(boardId,page,itemsCountInPage);
+		
+		
 		// 해당 게시물 전체 글 갯수
 		int articlesCount = articleService.getArticlesCount(boardId);
 		
+		// 페이지 카운트
+		int pagesCount = (int) Math.ceil((double)articlesCount / itemsCountInPage);
+		
 		model.addAttribute("articles", articles);
-		model.addAttribute("itemCountInPage", itemCountInPage);
+		model.addAttribute("itemsCountInPage", itemsCountInPage);
 		model.addAttribute("articlesCount", articlesCount);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("page", page);
 		
 		return "usr/article/list";
 	}

@@ -5,13 +5,17 @@
 	<!-- 해당 게시글 조회 -->
 	<select id="getForPrintArticles" resultType="Article">
 		SELECT * FROM article
-		where boardId = #{boardId}
+		<if test="boardId != 0">
+			where boardId = #{boardId}		
+		</if>
+		ORDER BY id DESC
+		limit #{limitStart}, #{limitTake}
 	</select>
 	
 	<!-- 해당 게시글의 갯수 -->
 	<select id="getArticlesCount" resultType="int">
 		select COUNT(*) from article
-		where id = #{boardId}
+		where boardId = #{boardId}
 	</select>
 	
 	<!--detail -->

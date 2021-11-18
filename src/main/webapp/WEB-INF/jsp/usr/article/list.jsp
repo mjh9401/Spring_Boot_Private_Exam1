@@ -10,7 +10,7 @@
   table{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20vh;
+    margin-top: 14vh;
     width: 1400px;
     height: 50px;
     border : 2px solid black;
@@ -55,10 +55,21 @@
          </a>
        </td>
       </tr>
-     </c:forEach>
+     </c:forEach>  
     </tbody>
    </table>
 </div>
+
+<div class="page-menu mt-3">
+  <div class="btn-group justify-center">
+     <c:set var="pageMenuArmLen" value="4"/>
+     <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}"/>
+     <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}"/>
   
+     <c:forEach begin="1" end="${pagesCount}" var="i">
+       <a class="btn ${page == i ? 'btn-active': ''}" href="?page=${i}">${i}</a>
+     </c:forEach>
+  </div>
+</div>  
  
 <%@ include file = "../common/footer.jspf"%>
