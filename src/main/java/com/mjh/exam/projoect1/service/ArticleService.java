@@ -1,5 +1,7 @@
 package com.mjh.exam.projoect1.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +12,6 @@ import com.mjh.exam.projoect1.vo.Article;
 public class ArticleService {
 	@Autowired
 	private ArticleDao articleDao;
-
-	public Article list() {
-		return articleDao.list();
-	}
 
 	public Article showdetail(String title, String body) {
 		return articleDao.showdetail(title,body);
@@ -29,5 +27,13 @@ public class ArticleService {
 
 	public void modify(int id, String title, String body) {
 		articleDao.modify(id,title,body);
+	}
+
+	public List<Article> getForPrintArticles(int boardId) {
+		return articleDao.getForPrintArticles(boardId);
+	}
+
+	public int getArticlesCount(int boardId) {
+		return articleDao.getArticlesCount(boardId);
 	}
 }
