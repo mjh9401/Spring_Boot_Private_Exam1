@@ -66,9 +66,11 @@
      <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}"/>
      <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}"/>
   
-     <c:forEach begin="1" end="${pagesCount}" var="i">
+     <a class="btn" href="?page=1">처음으로</a>
+     <c:forEach begin="${startPage}" end="${endPage}" var="i">
        <a class="btn ${page == i ? 'btn-active': ''}" href="?page=${i}">${i}</a>
      </c:forEach>
+     <a class="btn" href="?page=${pagesCount}">마지막</a>
   </div>
 </div>  
  
