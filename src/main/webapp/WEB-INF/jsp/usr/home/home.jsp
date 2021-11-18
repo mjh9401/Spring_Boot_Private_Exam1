@@ -4,11 +4,11 @@
 <%@ include file = "../common/header.jspf" %>
 <style>
 /*배경화면*/
-
 .nav {
 	width: 100%;
 	height: 10vh;
 	background-color: white;
+    border-bottom: 1px solid black;
 }
 
 .nav-menu-bar {
@@ -59,7 +59,7 @@
 
 .title {
 	font-size: 75px;
-	color: white;
+	color: black;
 	font-weight: bold;
 	text-align: center;
 	position: absolute;
@@ -92,7 +92,7 @@
       </ul>
     </div>
   </div>
-  <div class="title-box">
+  <div class="title-box" >
     <h1 class="title">Think More<br>And Do It<br>Then you'll know the result.</h1>
   </div>
 <%@ include file = "../common/footer.jspf"%>

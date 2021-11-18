@@ -19,7 +19,7 @@
     margin-left: 50px;
     font-size: 35px;
     border-radius: 10px;
-    border-color: gray;
+    border:1px solid black;
   }  
   .btn1{
     width: 500px;

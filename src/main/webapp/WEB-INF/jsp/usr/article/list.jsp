@@ -1,34 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "../common/header.jspf" %>
-<style>
-  .container{
-    min-width: 1200px;
-    min-height: 600px;
-  }
-  
-  table{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 14vh;
-    width: 1400px;
-    height: 50px;
-    border : 2px solid black;
-    border-collapse : collapse;
-  }
-  
-  
-  td, th {
-    border-collapse : collapse;
-    border : 1px solid black;
-    text-align: center;
-  };
-  
-  
-</style>
 
-<div class="container">
-   <table>
+<div class="mt-3">
+   <table class="table table-fixed w-full">
     <colgroup>
       <col width="120" />
       <col width="150" />
@@ -46,7 +21,7 @@
     <tbody>
      <c:forEach var="article" items="${articles}">
       <tr>
-       <th>${article.id}</th>
+       <td>${article.id}</td>
        <td>${article.regDate}</td>
        <td>${article.updateDate}</td>
        <td>
@@ -60,7 +35,7 @@
    </table>
 </div>
 
-<div class="page-menu mt-3">
+<div class="page-menu mt-4">
   <div class="btn-group justify-center">
      <c:set var="pageMenuArmLen" value="4"/>
      <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}"/>
