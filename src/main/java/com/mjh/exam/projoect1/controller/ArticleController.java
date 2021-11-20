@@ -47,6 +47,7 @@ public class ArticleController {
 		// 페이지 카운트
 		int pagesCount = (int) Math.ceil((double)articlesCount / itemsCountInPage);
 		
+		model.addAttribute("boardId", boardId);
 		model.addAttribute("articles", articles);
 		model.addAttribute("itemsCountInPage", itemsCountInPage);
 		model.addAttribute("articlesCount", articlesCount);

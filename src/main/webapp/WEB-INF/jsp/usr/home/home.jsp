@@ -70,10 +70,10 @@
   <div class="nav row">
     <div class="nav-menu-bar cell">
       <div>
-        <a class="menu cell" href="/usr/article/list?boardId=1">공지게시판</a>
+        <a class="menu cell" href="/usr/article/list?boardId=1&page=1">공지게시판</a>
       </div>
       <div>
-        <a class="menu cell" href="/usr/article/list?boardId=2">자유게시판</a>
+        <a class="menu cell" href="/usr/article/list?boardId=2&page=1">자유게시판</a>
       </div>
     </div>
     <div class="icon cell">
