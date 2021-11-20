@@ -11,6 +11,7 @@
     border-radius: 10px;
     box-sizing: border-box;
     padding-top: 20px;
+    border: 1px solid black;
   }
   .box{
     margin-left: 60px;

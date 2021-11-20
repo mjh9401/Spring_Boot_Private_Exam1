@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../common/header.jspf" %>
 
-<div class="mt-3">
+<div class="mt-3 mb-3">
    <table class="table table-fixed w-full">
     <colgroup>
       <col width="120" />
@@ -34,19 +34,22 @@
     </tbody>
    </table>
 </div>
-
+     
+<a class="position btn btn-primary" href="../article/showWrite">작성</a>
+ 
 <div class="page-menu mt-4">
   <div class="btn-group justify-center">
      <c:set var="pageMenuArmLen" value="4"/>
      <c:set var="startPage" value="${page - pageMenuArmLen >= 1 ? page - pageMenuArmLen : 1}"/>
-     <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : pagesCount}"/>
+     <c:set var="endPage" value="${page + pageMenuArmLen <= pagesCount ? page + pageMenuArmLen : 1}"/>
   
      <a class="btn" href="?boardId=${boardId}&page=1">처음으로</a>
      <c:forEach begin="${startPage}" end="${endPage}" var="i">
        <a class="btn ${page == i ? 'btn-active': ''}" href="?boardId=${boardId}&page=${i}">${i}</a>
      </c:forEach>
-     <a class="btn" href="?boardId=${boardId}&page=${pagesCount}">마지막</a>
+     <a class="btn" href="?boardId=${boardId}&page=${endPage}">마지막</a>
   </div>
 </div>  
+ 
  
 <%@ include file = "../common/footer.jspf"%>

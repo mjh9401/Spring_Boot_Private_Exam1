@@ -2,6 +2,9 @@ package com.mjh.exam.projoect1.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,9 +30,10 @@ public class ArticleController {
 	
 	// 게시글 모두 조회
 	@RequestMapping("/usr/article/list")
-	public String showList(Model model, @RequestParam(defaultValue ="1") int boardId,
+	public String showList(HttpServletRequest req,Model model, @RequestParam(defaultValue ="1") int boardId,
 			@RequestParam(defaultValue = "1") int page) {
 		Board board = boardService.getBoardById(boardId);
+		HttpSession boardIdSession = req.getSession();
 		
 		if(board == null) {
 			return Ut.jsHistoryBack("게시물이 존재하지 않습니다.");
@@ -47,12 +51,13 @@ public class ArticleController {
 		// 페이지 카운트
 		int pagesCount = (int) Math.ceil((double)articlesCount / itemsCountInPage);
 		
-		model.addAttribute("boardId", boardId);
+		boardIdSession.setAttribute("boardId", boardId);
 		model.addAttribute("articles", articles);
 		model.addAttribute("itemsCountInPage", itemsCountInPage);
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("page", page);
+		
 		
 		return "usr/article/list";
 	}
@@ -62,6 +67,12 @@ public class ArticleController {
 	@ResponseBody
 	public Article showdetail(String title, String body) {
 		return articleService.showdetail(title,body);
+	}
+	
+	// 게시글 쓰기 페이지이동
+	@RequestMapping("usr/article/showWrite")
+	public String showWirte() {
+		return "usr/article/write";
 	}
 	
 	// 게시글쓰기

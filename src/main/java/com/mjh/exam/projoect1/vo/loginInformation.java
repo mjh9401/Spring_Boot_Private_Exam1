@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import com.mjh.exam.projoect1.Util.Ut;
-import com.mjh.exam.projoect1.service.MemberService;
 
 import lombok.Getter;
 
