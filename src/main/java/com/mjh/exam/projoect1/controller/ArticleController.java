@@ -61,7 +61,7 @@ public class ArticleController {
 		return "usr/article/list";
 	}
 	
-	// 게시글 키워드 조회
+	// 게시글 자세히
 	@RequestMapping("/usr/article/detail")
 	public String showdetail(Model model,int id) {
 		Article article = articleService.getArticlesById(id);
@@ -105,11 +105,23 @@ public class ArticleController {
 		articleService.deleteArticle(id);
 	}
 	
+	// 게시글 수정 페이지로 이동
+	@RequestMapping("usr/article/showModify")
+	public String showModify(Model model,int id) {
+		Article article = articleService.getArticlesById(id);
+		
+		model.addAttribute("article", article);
+		
+		return "usr/article/modify";
+	}
+	
 	// 게시글 수정
 	@RequestMapping("usr/article/modify")
 	@ResponseBody
-	public void modifyArticle(int id, String title, String body) {
+	public String modifyArticle(int id, String title, String body) {
 		articleService.modify(id,title,body);
+		
+		return Ut.jsHistoryReplace("게시글 수정이 완료됐습니다.", "/");
 	}
 	
 }

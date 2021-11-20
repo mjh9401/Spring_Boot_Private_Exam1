@@ -3,7 +3,7 @@
 <%@ include file = "../common/header.jspf" %>
 
 <section class="mt-5 container mx-auto px-3">
-  <div>
+  <div> 
    <table class="table">
     <colgroup>
      <col width="200" />
@@ -29,7 +29,14 @@
      </tr>
      <tr>
       <th>내용</th>
-      <td>${article.title}</td>
+      <td>${article.body}</td>
+     </tr>
+     <tr>
+      <th>수정</th>
+      <td>
+        <a class="btn btn-primary" href="../article/showModify?id=${article.id}">수정</a>
+        <button class="btn btn-primary" type="button" onclick="history.back();">뒤로가기</button>      
+      </td>
      </tr>
     </tbody>
    </table>

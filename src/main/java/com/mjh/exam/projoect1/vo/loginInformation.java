@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import com.mjh.exam.projoect1.Util.Ut;
+import com.mjh.exam.projoect1.service.MemberService;
 
 import lombok.Getter;
 
@@ -19,28 +20,29 @@ public class loginInformation {
 	private boolean isLogined;
 	@Getter
 	private Member loginedMember;
+	@Getter
+	private int loginMemberId;
 	
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
 	private HttpSession session;
 	
-	public loginInformation(HttpServletRequest req, HttpServletResponse resp) {
+	public loginInformation(HttpServletRequest req, HttpServletResponse resp, MemberService memberService) {
 		this.req = req;
 		this.resp = resp;
 		this.session = req.getSession();
+		
+		if(session.getAttribute("loginedMemberId") != null) {
+			isLogined = true;
+			loginMemberId = (int) session.getAttribute("loginedMemberId");
+			loginedMember = memberService.getMemberById(loginMemberId);
+		}
+		
+		req.setAttribute("loginInformation", this);
 	}
 
 	public void login(Member member) {
-		this.isLogined = true;
-		session.setAttribute("loginedMember", member);
-		
-		if(session.getAttribute("loginedMember") != null) {
-			this.isLogined = true;
-			this.loginedMember = (Member) session.getAttribute("loginedMember");
-		}
-		
-		session.setAttribute("loginInformation", this);
-		
+		session.setAttribute("loginedMemberId", member.getId());
 	}
 
 	public void logout() {		
