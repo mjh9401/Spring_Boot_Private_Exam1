@@ -12,7 +12,7 @@ public interface ArticleDao {
 
 	Article showdetail(@Param("title") String title,@Param("body") String body);
 
-	void write(@Param("title") String title, @Param("body") String body);
+	void write(@Param("boardId") int boardId,@Param("memberId") int memberId, @Param("title") String title, @Param("body") String body);
 
 	void deleteArticle(@Param("id") int id);
 
@@ -21,5 +21,7 @@ public interface ArticleDao {
 	List<Article> getForPrintArticles(@Param("boardId") int boardId,@Param("limitStart") int limitStart,@Param("limitTake") int limitTake);
 
 	int getArticlesCount(@Param("boardId") int boardId);
+
+	Article getArticleById(@Param("id") int id);
 
 }

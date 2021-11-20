@@ -17,8 +17,8 @@ public class ArticleService {
 		return articleDao.showdetail(title,body);
 	}
 
-	public void write(String title, String body) {
-		articleDao.write(title,body);
+	public void write(int boardId, int memberId, String title, String body) {
+		articleDao.write(boardId,memberId,title,body);
 	}
 
 	public void deleteArticle(int id) {
@@ -38,5 +38,9 @@ public class ArticleService {
 
 	public int getArticlesCount(int boardId) {
 		return articleDao.getArticlesCount(boardId);
+	}
+
+	public Article getArticlesById(int id) {
+		return articleDao.getArticleById(id);
 	}
 }

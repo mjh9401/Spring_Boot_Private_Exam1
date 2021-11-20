@@ -27,5 +27,18 @@ a{
 .position{
 	position:absolute;
 	right: 10%;
-	
 }
+.position-origin{
+	position: relative;
+}
+.position-center{
+	position:absolute;
+	top:50%;
+	left: 50%;
+	transform:translate(-50%,30%);
+}
+
+.table-outline{
+	border: 2px solid black;
+}
+

@@ -58,15 +58,16 @@ public class ArticleController {
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("page", page);
 		
-		
 		return "usr/article/list";
 	}
 	
 	// 게시글 키워드 조회
 	@RequestMapping("/usr/article/detail")
-	@ResponseBody
-	public Article showdetail(String title, String body) {
-		return articleService.showdetail(title,body);
+	public String showdetail(Model model,int id) {
+		Article article = articleService.getArticlesById(id);
+		
+		model.addAttribute("article", article);
+		return "usr/article/detail";
 	}
 	
 	// 게시글 쓰기 페이지이동
@@ -76,10 +77,25 @@ public class ArticleController {
 	}
 	
 	// 게시글쓰기
-	@RequestMapping("usr/article/write")
+	@RequestMapping("usr/article/dowrite")
 	@ResponseBody
-	public void Write(String title, String body) {
-		articleService.write(title,body);
+	public String doWrite(int boardId,int memberId, String title, String body) {
+				
+		if(Ut.empty(boardId)){
+			return Ut.jsHistoryBack("게시판 선택이 잘못 됐습니다.");
+		}
+		
+		if(Ut.empty(title)) {
+			return Ut.jsHistoryBack("제목이 없습니다.");
+		}
+		
+		if(Ut.empty(body)) {
+			return Ut.jsHistoryBack("내용이 없습니다.");
+		}
+		
+		articleService.write(boardId,memberId,title,body);
+		
+		return Ut.jsHistoryReplace("글 작성이 완료됐습니다.", "/");
 	}
 	
 	// 게시글 삭제
