@@ -22,7 +22,7 @@ public class ArticleService {
 	}
 
 	public void deleteArticle(int id) {
-		articleDao.deleteArticle(id);
+		 articleDao.deleteArticle(id);
 	}
 
 	public void modify(int id, String title, String body) {

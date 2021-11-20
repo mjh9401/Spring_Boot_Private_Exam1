@@ -35,6 +35,7 @@
       <th>수정</th>
       <td>
         <a class="btn btn-primary" href="../article/showModify?id=${article.id}">수정</a>
+        <a class="btn btn-primary" href="../article/delete?id=${article.id}">삭제</a>
         <button class="btn btn-primary" type="button" onclick="history.back();">뒤로가기</button>      
       </td>
      </tr>

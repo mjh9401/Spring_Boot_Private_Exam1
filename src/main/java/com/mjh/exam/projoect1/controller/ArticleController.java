@@ -101,8 +101,11 @@ public class ArticleController {
 	// 게시글 삭제
 	@RequestMapping("usr/article/delete")
 	@ResponseBody
-	public void deleteArticle(int id) {
+	public String deleteArticle(int id) {
+		
 		articleService.deleteArticle(id);
+		
+		return Ut.jsHistoryReplace("게시글 삭제가 완료됐습니다.", "/");
 	}
 	
 	// 게시글 수정 페이지로 이동
