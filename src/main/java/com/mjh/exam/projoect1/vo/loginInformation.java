@@ -49,8 +49,10 @@ public class loginInformation {
 		session.invalidate();
 	}
 
-	public void printHistoryReplaceJs(String msg, String afterUri) {
-		Ut.jsHistoryReplace(msg, afterUri);
+	public String printHistoryReplaceJs(String msg, String afterUri) {
+		
+		return Ut.jsHistoryReplace(msg, afterUri);
 	}
+
 
 }
