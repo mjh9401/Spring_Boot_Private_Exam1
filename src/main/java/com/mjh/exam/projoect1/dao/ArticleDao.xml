@@ -8,6 +8,23 @@
 		<if test="boardId != 0">
 			where boardId = #{boardId}		
 		</if>
+		<if test ="searchKeyword != ''">
+			<choose>
+				<when test="searchKeywordTypeCode == 'title'">
+				and title like concat('%',#{searchKeyword},'%')
+				</when>
+				<when test="searchKeywordTypeCode == 'body'">
+				and body like concat('%',#{searchKeyword},'%')
+				</when>
+				<otherwise>
+				and(
+				title like concat('%',#{searchKeyword},'%')
+				or
+				body like concat('%',#{searchKeyword},'%')
+				)
+				</otherwise>
+			</choose>
+		</if>
 		ORDER BY id DESC
 		limit #{limitStart}, #{limitTake}
 	</select>

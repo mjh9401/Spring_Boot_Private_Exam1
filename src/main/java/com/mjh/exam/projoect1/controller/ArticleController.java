@@ -30,8 +30,9 @@ public class ArticleController {
 	
 	// 게시글 모두 조회
 	@RequestMapping("/usr/article/list")
-	public String showList(HttpServletRequest req,Model model, @RequestParam(defaultValue ="1") int boardId,
-			@RequestParam(defaultValue = "1") int page) {
+	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue ="1") int boardId,
+			@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue ="title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
 		Board board = boardService.getBoardById(boardId);
 		HttpSession boardIdSession = req.getSession();
 		
@@ -42,7 +43,7 @@ public class ArticleController {
 		int itemsCountInPage = 10;
 		
 		// 해당 게시물 글 찾기
-		List<Article> articles = articleService.getForPrintArticles(boardId,page,itemsCountInPage);
+		List<Article> articles = articleService.getForPrintArticles(boardId,page,itemsCountInPage,searchKeyword,searchKeywordTypeCode);
 		
 		
 		// 해당 게시물 전체 글 갯수

@@ -8,6 +8,7 @@
     background-color: white;
     margin: 0 auto;
     margin-top: 150px;
+    border: 2px solid black;
     border-radius: 10px;
     box-sizing: border-box;
     padding-top: 20px;

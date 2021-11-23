@@ -54,5 +54,14 @@ public class loginInformation {
 		return Ut.jsHistoryReplace(msg, afterUri);
 	}
 
+	public String getCurrentUri() {
+		String currentUri = req.getRequestURI();
+        String queryString = req.getQueryString();
 
+        if (queryString != null && queryString.length() > 0) {
+            currentUri += "?" + queryString;
+        }
+
+        return currentUri;
+	}
 }

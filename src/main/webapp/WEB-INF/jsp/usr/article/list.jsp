@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../common/header.jspf" %>
 
+<div class="position mt-10">
+  <a class="btn btn-primary" href="../article/showWrite">작성</a>
+</div>
+
 <div class="mt-3 mb-3">
    <table class="table table-fixed w-full">
     <colgroup>
@@ -34,9 +38,25 @@
     </tbody>
    </table>
 </div>
-     
-<a class="position btn btn-primary" href="../article/showWrite">작성</a>
- 
+
+<!-- 검색 창 -->
+<div class="mt-10 ">
+  <form class="flex justify-center">
+    <input type="hidden" name="boardId" value="${param.boardId}" /> 
+    <select id="typeCode" name="searchKeywordTypeCode" class="select select-bordered">
+       <option disabled="disabled">검색타입</option>
+       <option value="title">제목</option>
+       <option value="body">내용</option>
+       <option value="title,body">제목,내용</option>
+    </select>
+    
+    <input type="text" name="searchKeyword" placeholder="검색어" class="ml-2 w-72 input input-bordered"/>
+    <input type="submit" class="ml-2 btn btn-primary" value="검색"/> 
+    
+  </form>
+</div>
+
+<!-- 페이징 -->
 <div class="page-menu mt-4">
   <div class="btn-group justify-center">
      <c:set var="pageMenuArmLen" value="4"/>

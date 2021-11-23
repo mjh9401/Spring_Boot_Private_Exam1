@@ -25,8 +25,7 @@ a{
 }
 
 .position{
-	position:absolute;
-	right: 10%;
+	margin-left:1600px;
 }
 .position-origin{
 	position: relative;

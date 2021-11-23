@@ -29,11 +29,11 @@ public class ArticleService {
 		articleDao.modify(id,title,body);
 	}
 
-	public List<Article> getForPrintArticles(int boardId, int page, int itemsCountInPage) {
+	public List<Article> getForPrintArticles(int boardId, int page, int itemsCountInPage, String searchKeyword, String searchKeywordTypeCode) {
 		int limitStart = (page -1) * itemsCountInPage;
 		int limitTake = itemsCountInPage;
 			
-		return articleDao.getForPrintArticles(boardId,limitStart,limitTake);
+		return articleDao.getForPrintArticles(boardId,limitStart,limitTake,searchKeyword,searchKeywordTypeCode);
 	}
 
 	public int getArticlesCount(int boardId) {

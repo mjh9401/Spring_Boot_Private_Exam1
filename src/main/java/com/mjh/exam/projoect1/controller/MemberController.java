@@ -85,8 +85,8 @@ public class MemberController {
 		if(member.getLoginPassword().equals(loginPassword) == false) {
 			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다.");
 		}	
-		// 아이디 비밀번호가 모두 맞는 경우
 		
+		// 아이디 비밀번호가 모두 맞는 경우
 		loginInformation.login(member);			
 		
 		return Ut.jsHistoryReplace(Ut.f("%s님 환영합니다.",member.getNickname()),"/");
