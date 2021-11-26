@@ -21,4 +21,22 @@ public class ReplyService {
 		
 		return replyDao.getForPrintReplies(boardId,articleId,memberId);
 	}
+
+	public void doDelete(int id) {
+		replyDao.doDelete(id);
+	}
+
+	public Reply getReplyIdById(int id) {
+		return replyDao.getArticleIdById(id);
+	}
+
+	public List<Reply> getRepliesByids(int id, int memberId, int boardId) {
+		return replyDao.getRepliesByids(id,memberId,boardId);
+	}
+
+	public void doModify(int id, String body) {
+		replyDao.doModify(id,body);
+	}
+
+	
 }

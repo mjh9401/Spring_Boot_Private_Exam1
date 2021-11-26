@@ -15,4 +15,13 @@ public interface ReplyDao {
 
 	List<Reply> getForPrintReplies(@Param("boardId") int boardId,@Param("articleId") int articleId,@Param("memberId") int memberId);
 
+	void doDelete(@Param("id") int id);
+
+	Reply getArticleIdById(@Param("id") int id);
+
+	List<Reply> getRepliesByids(@Param("id") int id,@Param("memberId") int memberId,@Param("boardId") int boardId);
+
+	void doModify(@Param("id") int id, @Param("body") String body);
+
+
 }

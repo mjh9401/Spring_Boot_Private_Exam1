@@ -26,4 +26,31 @@
 		and articleId = #{articleId}
 	</select>
 	
+	<select id="getArticleIdById" resultType="Reply">
+		select * from reply
+		where id = #{id}
+	</select>
+	
+	<select id="getRepliesByids" resultType="Reply">
+		SELECT * FROM reply
+		WHERE articleId = #{id}
+		AND memberId = #{memberId} 
+		AND boardId = #{boardId};
+	</select>
+	
+	
+	<!-- 댓글 삭제 -->
+	<delete id="doDelete">
+		delete from reply
+		where id = #{id}
+	</delete>
+	
+	<update id="doModify">
+		update reply
+		<set>
+			body = #{body}
+		</set>
+		where id = #{id}
+	</update>
+	
 </mapper>

@@ -68,6 +68,8 @@
       <tr>
        <td><b class="mr-5">${reply.nickName}</b></td>
        <td>${reply.body}</td>
+       <td><a class="btn btn-primary ml-3" href="../reply/showModify?id=${reply.articleId}">수정</a></td>
+       <td><a class="btn btn-primary ml-2" href="../reply/delete?id=${reply.id}">삭제</a></td>
       </tr>
      </c:forEach>  
     </tbody>

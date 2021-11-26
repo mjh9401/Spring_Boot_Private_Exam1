@@ -43,4 +43,8 @@ public class ArticleService {
 	public Article getArticlesById(int id) {
 		return articleDao.getArticleById(id);
 	}
+
+	public Article getArticlesByBoardId(int id) {
+		return articleDao.getArticleByBoardId(id);
+	}
 }
