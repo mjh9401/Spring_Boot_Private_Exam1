@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../common/header.jspf" %>
 
-<section class="mt-5 container mx-auto px-3">
+<section class="mt-24 container mx-auto px-3">
   <div> 
    <table class="table">
     <colgroup>
@@ -42,6 +42,39 @@
     </tbody>
    </table>
   </div>
+   
+  <div class="mt-9">
+   <form method="get" action="../reply/dowrite">
+   <input type="hidden"  name ="articleId"  value="${article.id}"/>
+   <input type="hidden"  name ="boardId"  value="${boardId}"/>
+   <table>
+    <tbody>
+      <tr>
+        <th>${loginInformation.getLoginedMember().getNickname()}</th>
+        <td>
+           <textarea name ="body" class="w-96 h-5 ml-5" rows="10" placeholder="댓글을 적어주세요"></textarea> 
+        </td>
+        <td>
+          <input type="submit" class="ml-5" value="작성" />
+        </td>
+      </tr>  
+     </tbody>
+    </table>
+    </form>
+    
+   <table>
+    <tbody>
+     <c:forEach var="reply" items="${replies}">
+      <tr>
+       <td><b class="mr-5">${reply.nickName}</b></td>
+       <td>${reply.body}</td>
+      </tr>
+     </c:forEach>  
+    </tbody>
+   </table>
+   
+  </div>  
+ 
 </section>
      
   

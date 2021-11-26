@@ -18,4 +18,5 @@ public class Article {
 	
 	private int count;
 	
+	
 }

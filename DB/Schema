@@ -107,22 +107,6 @@ insert into article
 select now(), now(), FLOOR(RAND() * 2) + 1, FLOOR(RAND() * 2) + 1, concat('제목_', rand()), CONCAT('내용_', RAND())
 from article;
 */
- 
-SELECT * FROM article;
-
-INSERT INTO article 
-SET regDate = NOW(), 
-updateDate = NOW(), 
-title = 'asdfas', 
-`body` = 'dasdfasdf' 
-memberId = 2, 
-boardId = 2; 
-
-INSERT INTO article
-SET regDate = NOW(),
-updateDate = NOW(),
-title = '제목1',
-`body` = 'ㅋㅋㅋㅋ';
 
 # reply 테이블
 CREATE TABLE reply(
@@ -131,6 +115,7 @@ CREATE TABLE reply(
     updateDate DATETIME NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
     boardId INT(10) UNSIGNED NOT NULL,
+    articleId INT(10) UNSIGNED NOT NULL, 
     `body` TEXT NOT NULL 
 );
 
@@ -141,8 +126,51 @@ CREATE TABLE reaction(
     updateDate DATETIME NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL, 
     boardId INT(10) UNSIGNED NOT NULL,
+    articleId INT(10) UNSIGNED NOT NULL,
     `point` SMALLINT(2) NOT NULL
 );
 
+INSERT INTO article 
+SET regDate = NOW(),
+updateDate = NOW(), 
+title = '걸걸',
+`body` = '걸걸',
+memberId =2,
+boardId = 2;
 
-SELECT * FROM article;
+
+INSERT INTO article 
+SET regDate = NOW(),
+updateDate = NOW(), 
+title = '마마무',
+`body` = '무무무',
+memberId =2,
+boardId = 2;
+
+INSERT INTO article 
+SET regDate = NOW(),
+updateDate = NOW(), 
+title = '무무무',
+`body` = '마마마',
+memberId =2,
+boardId = 2;
+
+
+INSERT INTO article 
+SET regDate = NOW(),
+updateDate = NOW(), 
+title = '무무무',
+`body` = '무무무',
+memberId =2,
+boardId = 2;
+
+INSERT INTO reply
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+boardId = 2,
+articleId = 1,
+`body` = '등업해주세요';
+
+
+ 

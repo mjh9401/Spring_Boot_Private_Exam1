@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mjh.exam.projoect1.dao.ReplyDao">
+	<!-- 댓글 작성 -->
+	<insert id="doWrite">
+		insert into reply
+		<set>
+			regDate = now(),
+			updateDate = now(),
+			articleId = #{articleId},
+			memberId = #{memberId},
+			boardId = #{boardId},
+			body = #{body},
+		</set>	
+	</insert>
+	
+	<!-- 해당 댓글 서치 -->
+	<select id="getForPrintReplies" resultType="Reply">
+		select R.*,M.nickname 
+		from reply as R
+		inner join member as M
+		on R.memberId = M.id
+		where memberId = #{memberId}
+		and boardId = #{boardId}
+		and articleId = #{articleId}
+	</select>
+	
+</mapper>

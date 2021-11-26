@@ -15,14 +15,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mjh.exam.projoect1.Util.Ut;
 import com.mjh.exam.projoect1.service.ArticleService;
 import com.mjh.exam.projoect1.service.BoardService;
+import com.mjh.exam.projoect1.service.ReplyService;
 import com.mjh.exam.projoect1.vo.Article;
 import com.mjh.exam.projoect1.vo.Board;
+import com.mjh.exam.projoect1.vo.Reply;
 import com.mjh.exam.projoect1.vo.loginInformation;
 
 @Controller
 public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private ReplyService replyService;
 	@Autowired
 	private BoardService boardService;
 	@Autowired
@@ -35,6 +39,7 @@ public class ArticleController {
 			@RequestParam(defaultValue = "") String searchKeyword) {
 		Board board = boardService.getBoardById(boardId);
 		HttpSession boardIdSession = req.getSession();
+		
 		
 		if(board == null) {
 			return Ut.jsHistoryBack("게시물이 존재하지 않습니다.");
@@ -52,6 +57,7 @@ public class ArticleController {
 		// 페이지 카운트
 		int pagesCount = (int) Math.ceil((double)articlesCount / itemsCountInPage);
 		
+		
 		boardIdSession.setAttribute("boardId", boardId);
 		model.addAttribute("articles", articles);
 		model.addAttribute("itemsCountInPage", itemsCountInPage);
@@ -66,8 +72,14 @@ public class ArticleController {
 	@RequestMapping("/usr/article/detail")
 	public String showdetail(Model model,int id) {
 		Article article = articleService.getArticlesById(id);
+		int memberId = loginInformation.getLoginMemberId();
+		int boardId = article.getBoardId();
+		
+		// 해당 댓글 찾기
+		List<Reply> replies = replyService.getForPrintReplies(boardId,article.getId(),memberId);
 		
 		model.addAttribute("article", article);
+		model.addAttribute("replies", replies);
 		return "usr/article/detail";
 	}
 	
