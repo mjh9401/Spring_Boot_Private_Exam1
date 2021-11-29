@@ -47,4 +47,6 @@ public class ArticleService {
 	public Article getArticlesByBoardId(int id) {
 		return articleDao.getArticleByBoardId(id);
 	}
+
+	
 }

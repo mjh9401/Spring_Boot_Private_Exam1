@@ -1,5 +1,8 @@
 package com.mjh.exam.projoect1.vo;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,11 +52,6 @@ public class loginInformation {
 		session.invalidate();
 	}
 
-	public String printHistoryReplaceJs(String msg, String afterUri) {
-		
-		return Ut.jsHistoryReplace(msg, afterUri);
-	}
-
 	public String getCurrentUri() {
 		String currentUri = req.getRequestURI();
         String queryString = req.getQueryString();
@@ -64,4 +62,21 @@ public class loginInformation {
 
         return currentUri;
 	}
+
+	public void printReplaceJs(String msg, String uri) throws IOException {
+		resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
+		
+		String Script = "<script>"
+				+ "const msg = '%s'.trim();"
+				+ "if(msg.length > 0){alert(msg);}"
+				+ "location.replace('%s');"
+				+ "</script>";
+		
+		out.printf(Script,msg,uri);
+		out.flush();
+		out.close();
+	}
+
+	
 }

@@ -9,6 +9,7 @@ public class Ut {
 		return String.format(format, args);
 	}
 	
+		
 	public static String jsHistoryBack(String msg) {
 		if(msg == null) {
 			msg = "";
@@ -101,4 +102,6 @@ public class Ut {
             return "";
         }
     }
+
+	
 }

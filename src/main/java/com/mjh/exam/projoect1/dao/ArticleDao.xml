@@ -64,6 +64,9 @@
 		GROUP BY A.id
 	</select>
 	
+	
+	
+	
 	<!-- 게시글 글쓰기 -->
 	<insert id="write">
 		INSERT INTO article 

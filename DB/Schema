@@ -57,6 +57,16 @@ nickName = 'user1',
 cellphonNo = '010-2222-2222',
 email = 'mjh9401@naver.com';
 
+INSERT INTO `member` 
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'user2',
+loginPassWord = 'user2',
+`name` = 'user2',
+nickName = 'user2',
+cellphonNo = '010-3333-2222',
+email = 'dfda11@naver.com';
+
 # 게시판 테이블 생성
 CREATE TABLE board(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -73,7 +83,7 @@ ALTER TABLE article ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER updateDa
 
 # 기존 게시물의 작성자를 2번으로 지정
 UPDATE article
-SET memberId = 2
+SET memberId = 1
 WHERE memberId =0;
 
 # 기본 게시판 생성
@@ -172,5 +182,6 @@ boardId = 2,
 articleId = 1,
 `body` = '등업해주세요';
 
+SELECT * FROM article;
 
- 
+
