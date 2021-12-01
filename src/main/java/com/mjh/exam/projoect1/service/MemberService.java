@@ -76,6 +76,9 @@ public class MemberService {
 		memberDao.remodify(member.getId(),tempPassword, null, null, null, null);
 	}
 
+
+	
+
 	
 
 	

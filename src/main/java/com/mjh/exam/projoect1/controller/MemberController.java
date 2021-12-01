@@ -24,6 +24,22 @@ public class MemberController {
 		return "usr/member/findLoginPw";
 	}
 	
+	@RequestMapping("/usr/member/getLoginIdDup")
+	@ResponseBody
+	public String getLoginIdDup(String loginId) {
+		if(Ut.empty(loginId)) {
+			return "아이디를 입력해주세요";		
+		}
+		
+		Member oldMember = memberService.getMemberByLoginId(loginId);
+		
+		if(oldMember != null) {
+			return "해당 로그인 아이디는 사용중입니다.";
+		}
+		return "사용가능한 로그인 아이디입니다.";
+	}
+	
+	
 	@RequestMapping("/usr/member/dofindLoginPw")
 	@ResponseBody
 	public String dofindLoginPw(String name,String loginId,String email) {
@@ -157,6 +173,7 @@ public class MemberController {
 		if(Ut.empty(email)) {
 			return Ut.jsHistoryBack("이메일이 없습니다.");
 		}
+		Member oldMember = memberService.getMemberByLoginId(loginId);
 		
 		memberService.doJoin(loginId, password, name, nickname, tel, email);
 		

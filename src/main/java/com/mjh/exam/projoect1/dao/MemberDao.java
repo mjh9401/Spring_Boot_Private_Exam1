@@ -30,6 +30,8 @@ public interface MemberDao {
 	void remodify(@Param("id") int id,@Param("pw") String sha256,@Param("name") String name, 
 			@Param("nickName") String nickName,@Param("cellphonNo") String cellphonNo,@Param("email") String email);
 
+	Member checkMemberId(@Param("loginId") String loginId);
+
 
 
 }
