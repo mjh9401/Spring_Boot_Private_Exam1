@@ -166,10 +166,10 @@ public class ArticleController {
 	}
 	
 	// 게시글 수정
-	@RequestMapping("usr/article/modify")
+	@RequestMapping("usr/article/domodify")
 	@ResponseBody
-	public String modifyArticle(int id, String title, String body) {
-		articleService.modify(id,title,body);
+	public String modifyArticle(int articleId, String body) {
+		articleService.modify(articleId,body);
 		
 		return Ut.jsHistoryReplace("게시글 수정이 완료됐습니다.", "/");
 	}

@@ -77,6 +77,5 @@ public class loginInformation {
 		out.flush();
 		out.close();
 	}
-
 	
 }

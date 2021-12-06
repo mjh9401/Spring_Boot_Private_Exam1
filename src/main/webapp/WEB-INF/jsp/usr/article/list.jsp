@@ -13,6 +13,8 @@
       <col width="150" />
       <col width="150" />
       <col width="120" />
+      <col width="50" />
+      <col width="50" />
     </colgroup>
     <thead>
      <tr>
@@ -20,6 +22,8 @@
       <td>작성날짜</td>
       <td>수정날짜</td>
       <td>제목</td>
+      <td>작성자</td>
+      <td>조회수</td>
      </tr>
     </thead>
     <tbody>
@@ -33,6 +37,8 @@
            ${article.title}
          </a>
        </td>
+       <td>${article.loginId}</td>
+       <td>${article.hit}</td>
       </tr>
      </c:forEach>  
     </tbody>

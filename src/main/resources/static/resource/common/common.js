@@ -1,5 +1,6 @@
 function checkIdDup(el){
 	const form = $(el).closest('form').get(0);
+	
 		
 	$.get('../member/getLoginIdDup',{
 		isAjax : 'Y',

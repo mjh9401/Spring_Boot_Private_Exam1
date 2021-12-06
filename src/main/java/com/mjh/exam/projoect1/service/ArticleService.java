@@ -25,8 +25,8 @@ public class ArticleService {
 		 articleDao.deleteArticle(id);
 	}
 
-	public void modify(int id, String title, String body) {
-		articleDao.modify(id,title,body);
+	public void modify(int id, String body) {
+		articleDao.modify(id,body);
 	}
 
 	public List<Article> getForPrintArticles(int boardId, int page, int itemsCountInPage, String searchKeyword, String searchKeywordTypeCode) {

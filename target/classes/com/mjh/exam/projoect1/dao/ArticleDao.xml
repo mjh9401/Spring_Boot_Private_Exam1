@@ -4,7 +4,10 @@
 <mapper namespace="com.mjh.exam.projoect1.dao.ArticleDao">
 	<!-- 게시판에 해당하는 게시글 조회 -->
 	<select id="getForPrintArticles" resultType="Article">
-		SELECT * FROM article
+		SELECT A.*,M.loginId 
+		FROM article as A
+		left join member as M
+		on A.memberId = M.id 
 		<if test="boardId != 0">
 			where boardId = #{boardId}		
 		</if>
@@ -37,8 +40,11 @@
 	
 	<!-- 해당하는 게시글 조회 -->
 	<select id="getArticleById" resultType="Article">
-		select * from article
-		where id = #{id}
+		SELECT A.*,M.loginId 
+		FROM article as A
+		left join member as M
+		on A.memberId = M.id
+		where A.id = #{id}
 	</select>
 	
 	<!--detail -->
@@ -76,7 +82,8 @@
 			title = #{title},
 			body = #{body},
 			memberId = #{memberId},
-			boardId = #{boardId}, 
+			boardId = #{boardId},
+			hit = 0, 
 		</set>
 	</insert>
 	
@@ -94,18 +101,10 @@
 	<update id="modify">
 		update article 
 		<set>
-			<choose>
-				<when test="title != null">
-					title = #{title}
-				</when>
-				<when test="body != null">
-					body = #{body}	
-				</when>
-				<otherwise>
-					title = #{title},
-					body = #{body}
-				</otherwise>
-			</choose>
+			UpdateDate = now(),
+			<if test="body != null">
+				body = #{body}	
+			</if>
 		</set>
 		where id = #{id}
 	</update>

@@ -3,7 +3,7 @@
 <%@ include file = "../common/header.jspf" %>
 
 <div class="table mx-auto mt-20 ">
-     <form name ="form1" action="../member/dojoin" method="post">     
+     <form action="../member/dojoin" method="post">     
        <table>
          <tbody>
             <tr>
