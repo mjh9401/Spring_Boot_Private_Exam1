@@ -31,5 +31,7 @@ public interface ArticleDao {
 
 	void increaseHit(@Param("id") int id);
 
+	int getArticleHitCount(int id);
+
 
 }

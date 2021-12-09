@@ -88,9 +88,7 @@ public class ArticleController {
 		int memberId = loginInformation.getLoginMemberId();
 		int boardId = article.getBoardId();
 		
-		// 해당 글 조회수
-		articleService.increaseHit(id);
-		
+				
 		// 해당 댓글 찾기
 		List<Reply> replies = replyService.getForPrintReplies(boardId,article.getId(),memberId);
 		
@@ -98,6 +96,16 @@ public class ArticleController {
 		model.addAttribute("replies", replies);
 		
 		return "usr/article/detail";
+	}
+	
+	@RequestMapping("/usr/article/doIncreaseHitCount")
+	@ResponseBody
+	public int doIncreaseHit(int id) {
+		
+		articleService.increaseHit(id);
+		int increaseHit = articleService.getArticleHitCount(id);
+		
+		return increaseHit;
 	}
 	
 	// 게시글 쓰기 페이지이동

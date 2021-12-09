@@ -49,7 +49,11 @@ public class ArticleService {
 	}
 
 	public void increaseHit(int id) {
-		articleDao.increaseHit(id);
+		 articleDao.increaseHit(id);
+	}
+
+	public int getArticleHitCount(int id) {
+		return articleDao.getArticleHitCount(id);
 	}
 
 	

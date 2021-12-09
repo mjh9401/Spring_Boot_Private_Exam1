@@ -70,7 +70,11 @@
 		GROUP BY A.id
 	</select>
 	
-	
+	<!-- 조회수 조회 -->
+	<select id="getArticleHitCount" resultType="int">
+		select hit from article
+		where id = #{id}
+	</select>
 	
 	
 	<!-- 게시글 글쓰기 -->

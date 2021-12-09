@@ -30,7 +30,9 @@
           </tr>
           <tr>
             <th>조회수</th>
-            <td>${article.hit}</td>
+            <td>
+              <span class="article-detail_hitCount">${article.hit}</span>
+            </td>
           </tr>
           <tr>
             <th>제목</th>
@@ -88,8 +90,22 @@
     </tbody>
    </table>
   </div> 
-   
+  
 </section>
    
+ 
+ <script>
+ 	const params = {};
+	params.id = parseInt('${param.id}');
+	
+ 	$.get('../article/doIncreaseHitCount',{
+ 		id : params.id,
+ 		isAjax : 'Y',
+ 	},function(data){
+ 		$('.article-detail_hitCount').empty().html(data);
+ 	}, 'text')
+ 
+ 	
+ </script>
  
 <%@ include file = "../common/footer.jspf"%>
