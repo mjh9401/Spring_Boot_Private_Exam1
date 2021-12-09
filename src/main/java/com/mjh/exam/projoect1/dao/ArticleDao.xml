@@ -108,4 +108,14 @@
 		</set>
 		where id = #{id}
 	</update>
+	
+	<!-- 게시글 조회수 증가 -->
+	<update id="increaseHit">
+		update article
+		<set>
+			hit = hit +1
+		</set>
+		where id = #{id}
+	</update>
+	
 </mapper>

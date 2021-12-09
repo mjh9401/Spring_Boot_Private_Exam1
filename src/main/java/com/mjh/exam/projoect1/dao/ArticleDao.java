@@ -29,5 +29,7 @@ public interface ArticleDao {
 
 	void modify(@Param("id") int id,@Param("body") String body);
 
+	void increaseHit(@Param("id") int id);
+
 
 }

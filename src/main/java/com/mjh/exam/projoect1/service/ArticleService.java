@@ -48,5 +48,9 @@ public class ArticleService {
 		return articleDao.getArticleByBoardId(id);
 	}
 
+	public void increaseHit(int id) {
+		articleDao.increaseHit(id);
+	}
+
 	
 }

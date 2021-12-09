@@ -29,6 +29,10 @@
             <td>${article.loginId}</td>
           </tr>
           <tr>
+            <th>조회수</th>
+            <td>${article.hit}</td>
+          </tr>
+          <tr>
             <th>제목</th>
             <td>
               ${article.title}
@@ -87,7 +91,5 @@
    
 </section>
    
-  
- 
  
 <%@ include file = "../common/footer.jspf"%>

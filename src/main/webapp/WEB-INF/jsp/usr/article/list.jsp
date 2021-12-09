@@ -2,11 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../common/header.jspf" %>
 
-<div class="position mt-10">
-  <a class="btn btn-primary" href="../article/showWrite">작성</a>
-</div>
 
-<div class="mt-3 mb-3">
+<div class="mt-10 mb-3">
    <table class="table table-fixed w-full">
     <colgroup>
       <col width="120" />
@@ -58,6 +55,7 @@
     
     <input type="text" name="searchKeyword" placeholder="검색어" class="ml-2 w-72 input input-bordered"/>
     <input type="submit" class="ml-2 btn btn-primary" value="검색"/> 
+    <a class="btn btn-primary ml-3" href="../article/showWrite">작성</a>
     
   </form>
 </div>

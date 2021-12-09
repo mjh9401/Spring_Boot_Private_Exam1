@@ -88,11 +88,15 @@ public class ArticleController {
 		int memberId = loginInformation.getLoginMemberId();
 		int boardId = article.getBoardId();
 		
+		// 해당 글 조회수
+		articleService.increaseHit(id);
+		
 		// 해당 댓글 찾기
 		List<Reply> replies = replyService.getForPrintReplies(boardId,article.getId(),memberId);
 		
 		model.addAttribute("article", article);
 		model.addAttribute("replies", replies);
+		
 		return "usr/article/detail";
 	}
 	

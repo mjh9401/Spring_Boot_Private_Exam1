@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-import com.mjh.exam.projoect1.Util.Ut;
 import com.mjh.exam.projoect1.service.MemberService;
 
 import lombok.Getter;
@@ -43,7 +42,7 @@ public class loginInformation {
 		
 		req.setAttribute("loginInformation", this);
 	}
-
+	
 	public void login(Member member) {
 		session.setAttribute("loginedMemberId", member.getId());
 	}
